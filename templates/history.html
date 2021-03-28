@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block title %} History Of Orders{% endblock title %}
+{% block body %}
+
+    <div class="container my-3">
+
+                 {% if order|length == 0 %}
+
+                <div class="alert alert-dark" role="alert">
+                    No Todos found. Add your first todo now!
+                  </div>
+                    {% else %}
+                    <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th scope="col">SNo</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Address</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Amount</th>
+                            <th scope="col">Actions</th>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+              {% for todo in order %}
+              <tr>
+                <th scope="row">{{loop.index}}</th>
+                <td>{{todo.cust_name}}</td>
+                <td>{{todo.cust_address}}</td>
+                <td>{{todo.desc}}</td>
+                <td>{{todo.amount}}</td>
+
+              </tr>
+
+              {% endfor %}
+            </tbody>
+            </table>
+              {% endif %}
+
+
+    </div>
+{% endblock body %}
